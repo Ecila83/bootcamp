@@ -7,6 +7,7 @@ class panier{
     const PRIX_VIN = 10;
     const TAXE6 = 1.06;
     const TAXE21 = 1.21;
+    const REDUCTION =0.5;
 
     public $quantiteBanane;
     public $quantitePomme;
@@ -35,10 +36,18 @@ class panier{
         $prixHtva = $this->prix()-$this->taxe();
         return $prixHtva;
     }
+
+    public function reduction(){
+        $prixFruit = $this->quantiteBanane * self::PRIX_BANANE +
+                     $this->quantitePomme * self::PRIX_POMME; 
+        $reductionFruit = $prixFruit * self::REDUCTION;
+        return $reductionFruit;
+    }
 }
 
 $panier = new panier(6, 3, 2);
 echo "Prix total: " . $panier->prix() . "<br>";
 echo "Taxe totale: " . $panier->taxe() . "<br>";
 echo "prix Htva: " . $panier->Htva() . "<br>";
-
+echo "reduction: " .$panier->reduction(). "<br>";
+echo "prix total aprés reduction: ".($panier->prix()-$panier->reduction()). "<br>";

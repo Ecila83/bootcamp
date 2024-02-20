@@ -26,10 +26,6 @@ class Groupe {
         $this->etudiants = $etudiants;
     }
 
-    public function getEtudiants(): array {
-        return $this->etudiants;
-    }
-
     public function scoreMoyen(): float {
         $total = 0;
     

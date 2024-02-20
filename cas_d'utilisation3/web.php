@@ -68,8 +68,10 @@ $contenus[] = new PosteVacant("Développeur Web Full Stack recherché", "Nous re
 foreach ($contenus as $contenu) {
     if ($contenu instanceof Article) {
         echo $contenu->titreArticle(); 
-    } else {
-        echo $contenu->afficherTitre(); 
+    } else if ($contenu instanceof Annonce) {
+        echo $contenu->titreAnnonce(); 
+    } else if ($contenu instanceof PosteVacant) {
+        echo $contenu->titrePosteVacant(); 
     }
     echo $contenu->afficherTexte();
 }

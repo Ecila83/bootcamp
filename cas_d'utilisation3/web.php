@@ -48,30 +48,33 @@ class PosteVacant extends Contenu {
     }
 }
 
-$breakingNews = "Breaking News";
-$titreArticle = "Les avantages de la technologie moderne";
-$texteArticle = "La technologie moderne a révolutionné notre façon de vivre et de travailler. Dans cet article,
- nous explorons les nombreux avantages de l'utilisation de la technologie dans différents aspects de notre vie quotidienne.";
+$contenus = [];
 
-$titreAnnonce = "Offre spéciale : Vente Flash !";
-$texteAnnonce = "Ne manquez pas notre vente flash exclusive ! 
-Des réductions incroyables sur une large gamme de produits. Faites vite, l'offre se termine bientôt !";
 
-$titrePosteVacant = "Développeur Web Full Stack recherché";
-$textePosteVacant = "Nous recherchons un développeur Web Full Stack talentueux pour rejoindre notre équipe dynamique. Si vous êtes passionné par la création de sites Web 
-et que vous avez une expérience pratique avec les technologies de développement Web.";
+$contenus[] = new Article("Les avantages de la technologie moderne", "La technologie moderne a révolutionné notre façon de vivre et de travailler. Dans cet article, nous explorons les nombreux avantages de l'utilisation de la technologie dans différents aspects de notre vie quotidienne.");
+$contenus[] = new Article("Breaking News", "Une nouvelle importante vient de tomber. Restez à l'écoute pour plus de détails.");
 
-$article = new Article($breakingNews, $texteArticle);
-$annonce = new Annonce($titreAnnonce, $texteAnnonce);
-$posteVacant = new PosteVacant($titrePosteVacant, $textePosteVacant);
+$contenus[] = new Annonce("Offre spéciale : Vente Flash !", "Ne manquez pas notre vente flash exclusive ! Des réductions incroyables sur une large gamme de produits. Faites vite, l'offre se termine bientôt !");
 
-echo $article->titreArticle($titreArticle);
-echo $article->afficherTexte();
+$contenus[] = new PosteVacant("Développeur Web Full Stack recherché", "Nous recherchons un développeur Web Full Stack talentueux pour rejoindre notre équipe dynamique. Si vous êtes passionné par la création de sites Web et que vous avez une expérience pratique avec les technologies de développement Web.");
 
-echo $annonce->titreAnnonce();
-echo $annonce->afficherTexte();
 
-echo $posteVacant->titrePosteVacant();
-echo $posteVacant->afficherTexte();
+$titresSuivants = [
+    "Breaking News" => "Fantastique!"
+];
+
+foreach ($contenus as $contenu) {
+    if ($contenu instanceof Article && $contenu->titre === Article::BREAKINGNEWS) {
+      
+        if (isset($titresSuivants[$contenu->titre])) {
+            echo $contenu->titreArticle($titresSuivants[$contenu->titre]);
+        } else {
+            echo $contenu->afficherTitre(); 
+        }
+    } else {
+        echo $contenu->afficherTitre();
+    }
+    echo $contenu->afficherTexte();
+}
 
 

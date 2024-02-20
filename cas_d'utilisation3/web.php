@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-class contenu {
+class Contenu {
     public $titre;
     public $texte;
 
@@ -19,7 +19,7 @@ class contenu {
     }
 }
 
-Class article extends contenu {
+Class Article extends Contenu {
     const BREAKINGNEWS = "Breaking News";
     const BREAKING = "BREAKING : ";
        
@@ -34,13 +34,13 @@ Class article extends contenu {
 
 }
 
-class annonce extends contenu {
+class Annonce extends Contenu {
     public function titreAnnonce(){
         return "<h2>" .mb_strtoupper($this->titre)."</h2>";
     }
 }
 
-class posteVacant extends contenu {
+class PosteVacant extends Contenu {
     public string $offre =" - Postulez maintenant!";
 
     public function titrePosteVacant(){

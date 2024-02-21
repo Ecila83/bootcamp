@@ -75,7 +75,7 @@ class Groupe {
         }
     
         return [$meilleurEtudiant, $moinsBonEtudiant];
-    }
+    } 
   
     public function echangerEtudiant(Groupe $autreGroupe) {
         [$meilleurEtudiantCeGroupe, $moinsBonEtudiantCeGroupe] = $this->trouverMeilleurEtMoinsBonEtudiant();

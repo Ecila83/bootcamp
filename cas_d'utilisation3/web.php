@@ -30,7 +30,7 @@ Class Article extends Contenu {
         $this->titreSuivant = $titreSuivant;
     }
        
-    public function titreArticle(){
+    public function afficherTitre(){
        
         if($this->titre === self::BREAKINGNEWS && $this->titreSuivant !== null){
             return "<h2>".self::BREAKING.$this->titreSuivant."</h2>";
@@ -42,7 +42,7 @@ Class Article extends Contenu {
 }
 
 class Annonce extends Contenu {
-    public function titreAnnonce(){
+    public function afficherTitre(){
         return "<h2>" .mb_strtoupper($this->titre)."</h2>";
     }
 }
@@ -50,7 +50,7 @@ class Annonce extends Contenu {
 class PosteVacant extends Contenu {
     public string $offre =" - Postulez maintenant!";
 
-    public function titrePosteVacant(){
+    public function afficherTitre(){
         return "<h2>" .$this->titre.$this->offre."</h2>";
     }
 }
@@ -66,14 +66,6 @@ $contenus[] = new Annonce("Offre spéciale : Vente Flash !", "Ne manquez pas not
 $contenus[] = new PosteVacant("Développeur Web Full Stack recherché", "Nous recherchons un développeur Web Full Stack talentueux pour rejoindre notre équipe dynamique. Si vous êtes passionné par la création de sites Web et que vous avez une expérience pratique avec les technologies de développement Web.");
 
 foreach ($contenus as $contenu) {
-    if ($contenu instanceof Article) {
-        echo $contenu->titreArticle(); 
-    } else if ($contenu instanceof Annonce) {
-        echo $contenu->titreAnnonce(); 
-    } else if ($contenu instanceof PosteVacant) {
-        echo $contenu->titrePosteVacant(); 
-    }
+    echo $contenu->afficherTitre();
     echo $contenu->afficherTexte();
 }
-
-

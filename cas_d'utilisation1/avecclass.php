@@ -32,7 +32,7 @@ class panier{
     }
 
     public function Htva(){
-        $prixHtva = $this->prix()-$this->taxe();
+        $prixHtva = $this->prix() - $this->taxe();
         return $prixHtva;
     }
 }

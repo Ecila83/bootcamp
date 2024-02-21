@@ -50,4 +50,4 @@ echo "Prix total: " . $panier->prix() . "<br>";
 echo "Taxe totale: " . $panier->taxe() . "<br>";
 echo "prix Htva: " . $panier->Htva() . "<br>";
 echo "reduction: " .$panier->reduction(). "<br>";
-echo "prix total aprés reduction: ".($panier->prix()-$panier->reduction()). "<br>";
+echo "prix total aprés reduction: ".($panier->prix() - $panier->reduction()). "<br>";
